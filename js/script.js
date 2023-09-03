@@ -40,31 +40,34 @@ function newItem(){
 //jQuery Code
 
     function newItem(){
-        let li = $('<li></li>');
-        let inputValue = $('#input').val().li.append(inputValue);
+      let li = $('<li></li>');
+      let inputValue = $('#input').val();
+      li.append(inputValue);
     
-    if (inputValue === '') {
-        alert("Input Item For List");
-    } else {
+      if (inputValue === '') {
+        alert("Input List Item!");
+      } else {
         $('#list').append(li);
-    }
-    
-    function crossOut() {
+      }
+    //2. Crossing an item out:
+      function crossOut() {
         li.toggleClass("strike");
-    }
+      }
     
-    li.on("dblclick", function crossOut() {
+      li.on("dblclick", function crossOut() {
         li.toggleClass("strike");
-    })
+      });
+    //3. Adding a delete button
+      let crossOutButton = $('<crossOutButton></crossOutButton>');
+      crossOutButton.append(document.createTextNode('X'));
+      li.append(crossOutButton);
     
-    let crossOutButton = $('<crossOutButton></crossOutButton>');
-    crossOutButton.append(document.createTextNode('X'));
-    li.append(crossOutButton);
-    
-    crossOutButton.on("click", deleteListItem);
-    function deleteListItem() {
-        li.addClass("delete")
-    }
-    
-    $('#list').sortable();
+      crossOutButton.on("click", deleteListItem);
+      function deleteListItem(){
+    		li.addClass("delete")
+    	}
+       $('#list').sortable();
     };
+
+
+    
